@@ -1,16 +1,16 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+const cards = document.querySelectorAll(".card");
 
-\f0\fs24 \cf0 window.addEventListener("scroll", () => \{\
-  document.querySelectorAll(".card").forEach(card => \{\
-    const position = card.getBoundingClientRect().top;\
-    if (position < window.innerHeight - 50) \{\
-      card.style.opacity = 1;\
-      card.style.transform = "translateY(0)";\
-    \}\
-  \});\
-\});}
+const revealCards = () => {
+  cards.forEach(card => {
+    const position = card.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (position < screenHeight - 100) {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }
+  });
+};
+
+window.addEventListener("scroll", revealCards);
+window.addEventListener("load", revealCards);
